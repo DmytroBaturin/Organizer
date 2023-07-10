@@ -8,6 +8,7 @@ export const Modal = ({setOpen, onSubmit, titleprops}) => {
     const [title, setTitle] = useState('Title')
     const [text, setText] = useState('Text')
     const [category, setCategory] = useState('1')
+
     return(
         <>
             <div className="drawer">

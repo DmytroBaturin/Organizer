@@ -11,6 +11,12 @@
   display: flex;
   align-items: center;
 }
+@media (max-width: 768px){
+  .info-profile{
+    display: flex;
+    flex-direction: column;
+  }
+}
 .avatar{
   flex: 0 0 auto;
   margin-right: 40px;
