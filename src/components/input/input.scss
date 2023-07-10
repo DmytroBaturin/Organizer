@@ -1,0 +1,52 @@
+@import "src/global";
+.input-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  p{
+    bottom: 30px;
+    left: 10px;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 14px;
+    opacity: 0.2;
+    position: absolute;
+  }
+  .input-container_ico{
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    img {
+      position: absolute;
+    }
+    .close {
+      display: none;
+      cursor: pointer;
+      right: 27px;
+    }
+    .search {
+      left: 27px;
+    }
+  }
+  input {
+    width: 100%;
+    background: $base-color;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-family: Poppins, sans-serif;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    padding: 0 52px;
+    height: 37px;
+    transition: box-shadow 0.1s ease-in-out;
+    &:focus{
+      outline: 1.2px solid #6a6ef3;
+    }
+  }
+
+
+}

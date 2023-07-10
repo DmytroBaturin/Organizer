@@ -1,0 +1,27 @@
+.modalNote{
+  display: flex;
+  position: absolute;
+  width: 134px;
+  right: -10px;
+  top: -10px;
+  opacity: 0.9;
+  height: 124px;
+  border-radius: 5px;
+  background: rgba(71, 68, 76, 0.90);
+  backdrop-filter: blur(2px);
+  padding-left: 20px;
+  .categoryEdit{
+    margin-top: 32px;
+    p{
+      margin: 0;
+      font-size: 16px;
+      color: #F9F9F9;
+    }
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+.EditBtn{
+  height: 20px;
+}

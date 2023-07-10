@@ -1,0 +1,89 @@
+.popUp {
+  justify-content: center;
+  vertical-align: center;
+  padding-top: 10px;
+  z-index: 10;
+  position: fixed;
+  left: 50%;
+  top: 190px;
+  width: 450px;
+  height: 370px;
+  background: white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+}
+.popUp h1{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  margin-left: 43px;
+}
+.header_popUp{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.header_popUp svg{
+  margin-right: 44px;
+}
+.input_popUp{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px 0px 35px;
+}
+.input_popUp .title{
+  width: 351px;
+  font-family: 'Poppins', sans-serif;
+  height: 38px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+.input_popUp .text{
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  border: none;
+  background: rgba(217, 217, 217, 0.5);
+  display: inline-block;
+  width: 351px;
+  height: 172px;
+  resize: none;
+}
+.popUp{
+  .submitbtn{
+  display: flex;
+  margin: 17px auto;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: white;
+  background: rgba(46, 180, 255, 0.87);
+  border-radius: 20px;
+  padding: 10px 50px;
+  border: none;
+  transition: transform 0.1s ease-in;
+}
+}
+.popUp button:hover{
+  transform: scale(1.03);
+}
+.drawer{
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+  position: fixed;
+  z-index: 10;
+  height: 100%;
+  background: black;
+  width: 100%;
+}
+.input_popUp{
+  .padding{
+    margin-top: 20px;
+  }
+
+}

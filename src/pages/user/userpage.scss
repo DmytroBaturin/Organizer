@@ -1,0 +1,21 @@
+.type-page{
+  font-size: 25px;
+}
+.userpage{
+  padding-top: 10px;
+}
+.info-container-profile{
+
+}
+.info-profile{
+  display: flex;
+  align-items: center;
+}
+.avatar{
+  flex: 0 0 auto;
+  margin-right: 40px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: #ECECEC;
+}

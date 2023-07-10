@@ -1,0 +1,44 @@
+.main-navbar{
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 36px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.addnew{
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  img{
+  }
+}
+.filter-main{
+  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  svg{
+  rotate: 180deg;
+  }
+}
+.note-continer{
+  justify-content: center;
+  align-items: center;
+  place-content: center;
+  place-items: center;
+  display: grid;
+  column-gap: 4%;
+  row-gap: 60px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+.smileContent{
+  position: absolute;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

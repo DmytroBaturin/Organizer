@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 113.407 69.589">
+  <g id="Atoms_Icons_Eye_Active" transform="translate(2.5 2.5)">
+    <g id="Eye">
+      <path id="Path" d="M108.407,32.295S84.224,64.589,54.2,64.589,0,32.295,0,32.295,24.183,0,54.2,0,108.407,32.295,108.407,32.295Z" fill="none" stroke="#022c43" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="25" stroke-width="7"/>
+      <ellipse id="Oval" cx="16.678" cy="16.147" rx="16.678" ry="16.147" transform="translate(37.525 16.147)" fill="none" stroke="#022c43" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="7"/>
+    </g>
+  </g>
+</svg>

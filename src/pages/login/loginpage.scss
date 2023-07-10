@@ -1,0 +1,35 @@
+.loginpage{
+  h1{
+    font-size: 16px;
+    font-weight: normal;
+  }
+  margin: 200px auto;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 230px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+.login-container{
+  width: 70%;
+  .padding{
+    padding-top: 10px;
+  }
+  button{
+    display: flex;
+    margin: 17px auto;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: white;
+    background: rgba(46, 180, 255, 0.87);
+    border-radius: 20px;
+    padding: 10px 50px;
+    border: none;
+    transition: transform 0.1s ease-in;
+  }
+}
