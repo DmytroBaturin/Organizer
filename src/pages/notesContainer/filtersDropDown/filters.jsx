@@ -1,14 +1,20 @@
 import styles from './filter.module.scss'
 import React, {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
-import {getNotes} from "../../../store/noteSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {categoryState, getNotes, updateCategory} from "../../../store/noteSlice";
 export const Filters = () => {
+    const categoryStates = useSelector(categoryState)
     const dispatch = useDispatch()
     const myRef = React.useRef()
     const ico = React.useRef()
-    const filters = ["category", "title", "text", "data"]
-
     const [clickedOutside, setClickedOutside] = useState(false);
+    const handleCategoryClick = () => {
+        dispatch(updateCategory(!categoryStates));
+        dispatch(getNotes({ search: '' }));
+        openDropdown();
+    };
+
+
     const openDropdown = () => {
         setClickedOutside(!clickedOutside);
     };
@@ -30,16 +36,11 @@ export const Filters = () => {
                     <path d="M4.5 -7.86805e-07L8.39711 3.75L0.602886 3.75L4.5 -7.86805e-07Z" fill="black"/>
                 </svg>
             </div>
-            {clickedOutside && ( <div ref={myRef} className={styles.filters}>
-                {filters.map((item, i) => (
-                    <div key={i} className={styles.borderP}>
-                    <p onClick={() => {
-                        dispatch(getNotes(
-                            {category: true}
-                        ))
-                    }}>{item}</p>
-                    </div>
-                ))}
+            {clickedOutside && (
+                <div ref={myRef} className={styles.filters}>
+                <p style={categoryStates ? {
+                    opacity: "0.2"
+                }: {opacity: "1"}} onClick={handleCategoryClick}>category</p>
             </div>)}
         </div>
     )

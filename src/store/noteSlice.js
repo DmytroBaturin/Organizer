@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const noteSelector = state => state.notes.notes;
 export const modalState = state => state.notes.open
+export const categoryState = state => state.notes.category
 
-export const getNotes = createAsyncThunk('notes/getNotes', async (params) => {
-    const {search = '', category } = params
-    console.log(category)
-    const res = await fetch(`https://64936b2b428c3d2035d1c0e4.mockapi.io/todo?title=${search}${category? '&sortBy=category&order=desc': ''}`)
+export const getNotes = createAsyncThunk('notes/getNotes', async (params, {getState, dispatch}) => {
+    const { search = ''} = params
+    const { category } = getState().notes
+
+    const res = await fetch(`https://64936b2b428c3d2035d1c0e4.mockapi.io/todo?title=${search}${category?'&sortBy=category&order=desc': ''}`)
         .then(response => response.json())
     return res
 })
@@ -58,9 +60,13 @@ export const noteSlice = createSlice({
         error: null,
         value: '',
         open: false,
-        notes: []
+        notes: [],
+        category: false
     },
     reducers: {
+        updateCategory: (state, action) => {
+            state.category = action.payload;
+        },
         openModal: (state, action) => {
             state.open = action.payload.open
         }
@@ -81,7 +87,7 @@ export const noteSlice = createSlice({
                   state.error = 'error';
               })
               .addCase(addNote.pending, (state, action) => {
-                console.log(action)
+
           })
               .addCase(addNote.fulfilled, (state, action) => {
                  state.notes.push(action.payload)
@@ -92,5 +98,5 @@ export const noteSlice = createSlice({
               })
        }
     })
-export const {openModal} = noteSlice.actions
+export const {openModal, updateCategory} = noteSlice.actions
 export default noteSlice.reducer

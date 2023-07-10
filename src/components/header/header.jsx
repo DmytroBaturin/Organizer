@@ -1,6 +1,6 @@
 import './header.scss'
 import primary from '../../img/primary.svg'
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Profile} from "./profile/profile";
 import {Input} from "../input/input";
 import {Link} from "react-router-dom";
@@ -12,9 +12,28 @@ import {setAuth} from "../../store/authSlice";
 import exit from '../../img/exit-svgrepo-com.svg'
 export const Header = () => {
     const [open, setOpen] = useState(false)
+    const menu = useRef()
+    console.log(menu.current)
+
+    useEffect(() => {
+        const handleResize = () => {
+            const mobileNavbar = document.querySelector('.mobile-navbar');
+            if (mobileNavbar && mobileNavbar.offsetWidth) {
+                setOpen(false);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+    }, []);
     const openMobileMenu = () => {
         setOpen(!open)
     }
+    useEffect(() => {
+        if (open) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [open]);
     const dispatch = useDispatch()
     const onChange = React.useCallback(
         debounce(
@@ -42,7 +61,7 @@ export const Header = () => {
               />
               <Profile
               />
-            {open && <div className='mobile-menu'>
+            {open && <div ref={menu} className='mobile-menu'>
                 <div className='mobile-menu-center'>
                     <div className='mobile-menu-info'>
                         <h1>My profile</h1>

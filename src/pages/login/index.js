@@ -22,7 +22,6 @@ export const Login = () => {
 
     const Submit = () => {
         if(!userName || !password){
-            console.log("Please enter")
             setError(true)
             setTimeout(() => {
                 setError(false)

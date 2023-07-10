@@ -36,6 +36,9 @@
   display: flex;
   flex-direction: column;
 }
+body.mobile-menu-center {
+  overflow: hidden;
+}
 header {
   margin-top: 35px;
   display: flex;

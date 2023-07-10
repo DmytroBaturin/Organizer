@@ -4,6 +4,9 @@
   background: #FFDAA3;
   border-radius: 8px;
   height: 340px;
+  .note-category{
+    opacity: 0.1;
+  }
   .note-content{
     display: flex;
     flex-direction: column;
