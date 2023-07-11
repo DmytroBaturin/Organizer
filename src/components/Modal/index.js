@@ -1,12 +1,10 @@
 import './modal.scss'
-import {useDispatch, useSelector} from "react-redux";
-import {addNote, modalState, openModal} from "../../store/noteSlice";
-import {Input} from "../input/input";
 import {Inputs} from "./inputs";
 import {useState} from "react";
 export const Modal = ({setOpen, onSubmit, titleprops}) => {
     const [title, setTitle] = useState('Title')
     const [text, setText] = useState('Text')
+    const [color, setColor] = useState('#FFDAA3')
     const [category, setCategory] = useState('1')
 
     return(
@@ -24,11 +22,12 @@ export const Modal = ({setOpen, onSubmit, titleprops}) => {
                 setTitle={setTitle}
                 setText={setText}
                 setCategory={setCategory}
+                setColor={setColor}
             />
             <button className='submitbtn'
                 onClick={() => {
                     setOpen()
-                    onSubmit(title,text,category)
+                    onSubmit(title,text,category, color)
                 }} >Click</button>
         </div>
         </>

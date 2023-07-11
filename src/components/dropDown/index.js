@@ -13,7 +13,7 @@ export const DropDown = ({onChange}) => {
         {important: 'important 3'}
     ]
     return(
-        <div className='dropdown padding'>
+        <div className='dropdown'>
             <button
                 style={open? {
                     border: '1px solid #6a6ef3'

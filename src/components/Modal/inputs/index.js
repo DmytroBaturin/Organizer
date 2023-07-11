@@ -1,8 +1,17 @@
 import {Input} from "../../input/input";
-import {useDispatch} from "react-redux";
 import {DropDown} from "../../dropDown";
+import './colorBtn.scss'
 
-export const Inputs = ({setTitle, setText, setCategory}) => {
+const style = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+}
+export const Inputs = ({setTitle, setText, setCategory, setColor}) => {
+    const handleColorChange = (event) => {
+        const newColor = event.target.value;
+        setColor(newColor);
+    };
     const onChangeTitle = (val) => {
         setTitle(val)
     }
@@ -26,9 +35,12 @@ export const Inputs = ({setTitle, setText, setCategory}) => {
                 modal
                 type='text'
             />
+            <div className='choosecolor' style={style}>
            <DropDown
                onChange={onChangeCategory}
            />
+            <input onChange={handleColorChange} className='colorBtn' value='#FFDAA3' type='color'/>
+            </div>
         </div>
     )
 }

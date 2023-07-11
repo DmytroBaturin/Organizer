@@ -1,34 +1,31 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const noteSelector = state => state.notes.notes;
-export const modalState = state => state.notes.open
 export const categoryState = state => state.notes.category
 
 export const getNotes = createAsyncThunk('notes/getNotes', async (params, {getState, dispatch}) => {
     const { search = ''} = params
     const { category } = getState().notes
-
     const res = await fetch(`https://64936b2b428c3d2035d1c0e4.mockapi.io/todo?title=${search}${category?'&sortBy=category&order=desc': ''}`)
         .then(response => response.json())
     return res
 })
 
-export const editNote = createAsyncThunk('notes/editNote', async (payload) => {
-    const res = await fetch(`https://64936b2b428c3d2035d1c0e4.mockapi.io/todo/${payload.id}`, {
+export const editNote = createAsyncThunk('notes/editNote', async (payload,{getState}) => {
+    const { id } = getState().edit
+    console.log(id)
+    const res = await fetch(`https://64936b2b428c3d2035d1c0e4.mockapi.io/todo/${id}`, {
         method: 'PUT',
         body: JSON.stringify(
             {
-                title: "edited",
-                text: "edited",
-                category: "edited",
-                color: "edited"
+                title: payload.title,
+                text: payload.text,
+                category: payload.category,
             }
         )
     })
     const data = await res.json();
     return data.notes
 })
-
-
 export const addNote = createAsyncThunk('notes/addNote', async (payload) => {
     const res = await fetch('https://64936b2b428c3d2035d1c0e4.mockapi.io/todo', {
         method: 'POST',
@@ -59,7 +56,6 @@ export const noteSlice = createSlice({
         isLoading: false,
         error: null,
         value: '',
-        open: false,
         notes: [],
         category: false
     },
@@ -67,28 +63,21 @@ export const noteSlice = createSlice({
         updateCategory: (state, action) => {
             state.category = action.payload;
         },
-        openModal: (state, action) => {
-            state.open = action.payload.open
-        }
         },
     extraReducers: (builder) => {
           builder.addCase(getNotes.pending,(state) => {
-              state.isLoading = true;
-              state.error = null;
+                 state.isLoading = true;
+                 state.error = null;
               })
               .addCase(getNotes.fulfilled, (state, action) => {
                   state.isLoading = true;
                   state.error = null;
                   state.notes = action.payload;
-
               })
               .addCase(getNotes.rejected, (state) => {
                   state.isLoading = false;
                   state.error = 'error';
               })
-              .addCase(addNote.pending, (state, action) => {
-
-          })
               .addCase(addNote.fulfilled, (state, action) => {
                  state.notes.push(action.payload)
               })
@@ -98,5 +87,5 @@ export const noteSlice = createSlice({
               })
        }
     })
-export const {openModal, updateCategory} = noteSlice.actions
+export const {updateCategory} = noteSlice.actions
 export default noteSlice.reducer
