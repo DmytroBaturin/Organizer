@@ -17,7 +17,6 @@ export const Note = ({note}) => {
           <h1>{note.title}</h1>
           <p>{note.text}</p>
           <p className='note-category'>important: {note.category}</p>
-
           </div>
           </div>
       </div>

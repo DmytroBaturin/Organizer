@@ -1,12 +1,7 @@
 import './modal.scss'
 import {Inputs} from "./inputs";
 import {useState} from "react";
-export const Modal = ({setOpen, onSubmit, titleprops}) => {
-    const [title, setTitle] = useState('Title')
-    const [text, setText] = useState('Text')
-    const [color, setColor] = useState('#FFDAA3')
-    const [category, setCategory] = useState('1')
-
+export const Modal = ({setOpen, onSubmit, titleprops, children}) => {
     return(
         <>
             <div className="drawer">
@@ -14,20 +9,15 @@ export const Modal = ({setOpen, onSubmit, titleprops}) => {
         <div className='popUp'>
             <div className='header_popUp'>
                 <h1>{titleprops}</h1>
-                <svg onClick={setOpen} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg onClick={() => setOpen()} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.949747 10.8493L10.8492 0.949758M0.949747 0.949758L10.8492 10.8493" stroke="black" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </div>
-            <Inputs
-                setTitle={setTitle}
-                setText={setText}
-                setCategory={setCategory}
-                setColor={setColor}
-            />
+            <div>{children}</div>
             <button className='submitbtn'
-                onClick={() => {
+                onClick={(event) => {
                     setOpen()
-                    onSubmit(title,text,category, color)
+                    onSubmit(event)
                 }} >Click</button>
         </div>
         </>

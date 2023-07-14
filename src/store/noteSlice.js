@@ -10,22 +10,23 @@ export const getNotes = createAsyncThunk('notes/getNotes', async (params, {getSt
     return res
 })
 
-export const editNote = createAsyncThunk('notes/editNote', async (payload,{getState}) => {
-    const { id } = getState().edit
-    console.log(id)
+export const editNote = createAsyncThunk('notes/editNote', async (arg) => {
+    const { id, title, category, text, color } = arg;
     const res = await fetch(`https://64936b2b428c3d2035d1c0e4.mockapi.io/todo/${id}`, {
         method: 'PUT',
-        body: JSON.stringify(
-            {
-                title: payload.title,
-                text: payload.text,
-                category: payload.category,
-            }
-        )
-    })
+        headers: {
+            'Content-Type': 'application/json'
+        },
+            body: JSON.stringify({
+            title: title,
+            text: text,
+            category: category,
+            color: color,
+        }),
+    });
     const data = await res.json();
-    return data.notes
-})
+    return data;
+});
 export const addNote = createAsyncThunk('notes/addNote', async (payload) => {
     const res = await fetch('https://64936b2b428c3d2035d1c0e4.mockapi.io/todo', {
         method: 'POST',
@@ -84,7 +85,16 @@ export const noteSlice = createSlice({
               .addCase(deleteNote.fulfilled, (state, action) => {
                   const deletedNoteId = action.meta.arg.id;
                   state.notes = state.notes.filter(note => note.id !== deletedNoteId);
-              })
+              }).addCase(editNote.fulfilled, (state, action) => {
+              const updatedNote = action.payload;
+              const index = state.notes.findIndex(note => note.id === updatedNote.id);
+              if (index !== -1) {
+                  state.notes[index] = updatedNote;
+              }
+          }
+          ).addCase(editNote.rejected, (state, action) => {
+                    console.log(action)
+          })
        }
     })
 export const {updateCategory} = noteSlice.actions

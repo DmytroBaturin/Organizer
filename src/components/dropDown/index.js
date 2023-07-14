@@ -3,7 +3,6 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {getNotes, updateCategory} from "../../store/noteSlice";
 export const DropDown = ({onChange}) => {
-    const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
     const [activeIndex, setActiveIndex] = useState(null)
     const [active, setActive] = useState(null)

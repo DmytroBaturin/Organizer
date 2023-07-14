@@ -7,7 +7,6 @@ export const Profile = () => {
     const [clickedOutside, setClickedOutside] = useState(false);
     const myRef = useRef(null);
     const ico = useRef();
-    const [anim] = useAutoAnimate()
     const openDropdown = () => {
         setClickedOutside(!clickedOutside);
     };

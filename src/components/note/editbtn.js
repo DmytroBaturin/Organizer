@@ -19,9 +19,10 @@ export const EditBtn = ({id}) => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
     return(
         <>
-            <svg ref={ico} onClick={openDropdown} className='editbtnote'
+            <svg onClick={openDropdown} className='editbtnote'
                 stroke={clickedOutside === true ? 'white' : 'black'}
                 style={clickedOutside === true ? {
                      zIndex: 10,
@@ -35,11 +36,9 @@ export const EditBtn = ({id}) => {
             </svg>
             {
                 clickedOutside &&
-                <div ref={myRef} onClick={handleClickOutside} className='modals'>
                 <DropDownNote
                 id={id}
                 />
-                </div>
             }
         </>
     )
