@@ -23,7 +23,6 @@ export const DropDownNote = ({id}) => {
     }
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(text, title)
         dispatch(editNote({
             id: id,
             title: title,
@@ -35,7 +34,7 @@ export const DropDownNote = ({id}) => {
     return (
         <div style={{
             zIndex: '1'
-        }} className='modalNote' >
+        }} className='modalNote'>
             <div className='categoryEdit'>
                 <p style={{cursor: "pointer"}} onClick={() => {dispatch(deleteNote({id: id}))}}>Delete</p>
                 <p style={{cursor: "pointer"}} onClick={HandlEditNote}>Edit</p>

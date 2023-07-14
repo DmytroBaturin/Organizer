@@ -93,7 +93,6 @@ export const noteSlice = createSlice({
               }
           }
           ).addCase(editNote.rejected, (state, action) => {
-                    console.log(action)
           })
        }
     })
