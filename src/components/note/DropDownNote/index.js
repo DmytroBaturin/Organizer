@@ -1,20 +1,21 @@
 import './modalNote.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {deleteNote, editNote} from "../../../store/noteSlice";
+import {deleteNote, editNote, noteSelector} from "../../../store/noteSlice";
 import {editmodalState, openEditModal} from "../../../store/ModalSlice";
 import {Modal} from "../../Modal";
 import {createPortal } from "react-dom"
 import {Inputs} from "../../Modal/inputs";
 import React, {useState} from "react";
 
-export const DropDownNote = ({id,myRef}) => {
+export const DropDownNote = ({id}) => {
+    const notes = useSelector(noteSelector);
+    const initialState = notes.find(note => note.id === id)
     const open = useSelector(editmodalState)
-    const [title, setTitle] = useState('Title')
-    const [text, setText] = useState('Text')
-    const [color, setColor] = useState('#FFDAA3')
-    const [category, setCategory] = useState('1')
+    const [title, setTitle] = useState(initialState.title)
+    const [text, setText] = useState(initialState.text)
+    const [color, setColor] = useState(initialState.color)
+    const [category, setCategory] = useState(initialState.category)
     const dispatch = useDispatch()
-
     const HandlEditNote = ()  => {
         dispatch(openEditModal({
             openEdit: !open
@@ -31,9 +32,8 @@ export const DropDownNote = ({id,myRef}) => {
             color: color
         }));
     };
-
     return (
-        <div ref={myRef} style={{
+        <div style={{
             zIndex: '1'
         }} className='modalNote' >
             <div className='categoryEdit'>
@@ -47,6 +47,7 @@ export const DropDownNote = ({id,myRef}) => {
                     setOpen={HandlEditNote}
                     children={
                         <Inputs
+                            value={{ title, text, color, category }}
                             setTitle={setTitle}
                             setText={setText}
                             setCategory={setCategory}

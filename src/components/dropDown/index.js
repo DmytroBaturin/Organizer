@@ -2,14 +2,14 @@ import './dropdown.scss'
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {getNotes, updateCategory} from "../../store/noteSlice";
-export const DropDown = ({onChange}) => {
+export const DropDown = ({onChange,value}) => {
     const [open, setOpen] = useState(false)
-    const [activeIndex, setActiveIndex] = useState(null)
-    const [active, setActive] = useState(null)
+    const [activeIndex, setActiveIndex] = useState(value-1)
+    const [active, setActive] = useState(`important: ${value}`)
     const category = [
-        {important: 'important 1'},
-        {important: 'important 2'},
-        {important: 'important 3'}
+        {important: 'important: 1'},
+        {important: 'important: 2'},
+        {important: 'important: 3'}
     ]
     return(
         <div className='dropdown'>
@@ -30,7 +30,7 @@ export const DropDown = ({onChange}) => {
                             setActive(val.important)
                             setOpen(!open)
                             onChange(i+1)
-                    }}>{val.important}</a>
+                    }}>{val?.important}</a>
                 ))}
             </div>}
         </div>

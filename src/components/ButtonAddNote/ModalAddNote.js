@@ -41,6 +41,7 @@ export const ModalAddNote = () => {
                     setOpen={setOpen}
                     children={
                     <Inputs
+                        value={{category: 1}}
                         setTitle={setTitle}
                         setText={setText}
                         setCategory={setCategory}

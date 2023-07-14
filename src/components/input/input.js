@@ -13,12 +13,13 @@ const lookStyle = {
     cursor: 'pointer',
     transition: 'opacity 0.1s ease-in-out',
 }
-export const Input = ({onChange, modal, type, height}) => {
+export const Input = ({onChange, modal, type, height, value}) => {
     const [look, setLook] = useState(true)
     return(
         <div className="padding input-container">
             <div className='input-container_ico'>
                 <input
+                    value={value}
                     type={type === 'password' && look ? 'password' : ''}
                     onChange={(e) => onChange(e.target.value)}
                     style={modal ? {...modalStyles,

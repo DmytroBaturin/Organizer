@@ -1,31 +1,20 @@
 
 import {DropDownNote, ModalNote} from "./DropDownNote";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 export const EditBtn = ({id}) => {
-    const myRef = React.useRef()
-    const ico = React.useRef()
     const [clickedOutside, setClickedOutside] = useState(false);
     const openDropdown = () => {
         setClickedOutside(!clickedOutside);
     };
-    const handleClickOutside = (e) => {
-        if (myRef.current && !myRef.current.contains(e.target) && !ico.current.contains(e.target)) {
-            setClickedOutside(false)
-        }
-    };
-    useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
 
     return(
         <>
             <svg onClick={openDropdown} className='editbtnote'
                 stroke={clickedOutside === true ? 'white' : 'black'}
                 style={clickedOutside === true ? {
-                     zIndex: 10,
+                     zIndex: 5,
                      opacity: '1',
                      stroke: "white"
             } : {
@@ -36,9 +25,11 @@ export const EditBtn = ({id}) => {
             </svg>
             {
                 clickedOutside &&
+                <div className='__dropdown'>
                 <DropDownNote
                 id={id}
                 />
+                </div>
             }
         </>
     )

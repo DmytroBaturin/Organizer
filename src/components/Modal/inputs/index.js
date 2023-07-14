@@ -7,7 +7,8 @@ const style = {
     justifyContent: "space-between",
     alignItems: "center",
 }
-export const Inputs = ({setTitle, setText, setCategory, setColor}) => {
+export const Inputs = ({setTitle, setText, setCategory, setColor, value}) => {
+    const { title, text, color, category } = value;
     const handleColorChange = (event) => {
         const newColor = event.target.value;
         setColor(newColor);
@@ -25,11 +26,13 @@ export const Inputs = ({setTitle, setText, setCategory, setColor}) => {
      return(
         <div className="input_popUp">
             <Input
+                value={title}
                 onChange={onChangeTitle}
                 modal
                 type='title'
             />
             <Input
+                value={text}
                 height='100px'
                 onChange={onChangeText}
                 modal
@@ -37,9 +40,10 @@ export const Inputs = ({setTitle, setText, setCategory, setColor}) => {
             />
             <div className='choosecolor' style={style}>
            <DropDown
+               value={category}
                onChange={onChangeCategory}
            />
-            <input onChange={handleColorChange} className='colorBtn' value='#FFDAA3' type='color'/>
+            <input onChange={handleColorChange} className='colorBtn' value={color} type='color'/>
             </div>
         </div>
     )

@@ -1,12 +1,26 @@
 import './modal.scss'
-import {Inputs} from "./inputs";
-import {useState} from "react";
+import {useEffect, useRef} from "react";
 export const Modal = ({setOpen, onSubmit, titleprops, children}) => {
+    const modalRef = useRef(null);
+
+    const handleOutsideClick = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setOpen();
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, []);
     return(
         <>
             <div className="drawer">
             </div>
-        <div className='popUp'>
+        <div className='popUp' ref={modalRef}>
             <div className='header_popUp'>
                 <h1>{titleprops}</h1>
                 <svg onClick={() => setOpen()} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
