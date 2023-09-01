@@ -19,12 +19,16 @@ export const ModalAddNote = () => {
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(addNote({
-            title,
-            text,
-            category,
-            color
-        }));
+        if(!title && !text){
+            console.log('nono')
+        }else {
+            dispatch(addNote({
+                title,
+                text,
+                category,
+                color
+            }));
+        }
         setTitle('')
         setText('')
         setCategory('1')

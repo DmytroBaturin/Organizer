@@ -29,6 +29,7 @@
   align-items: center;
   place-content: center;
   place-items: center;
+  word-wrap: anywhere;
   display: grid;
   column-gap: 4%;
   row-gap: 60px;
@@ -41,4 +42,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+@media screen and (max-width: 400px){
+  .main-navbar{
+    gap: 0px;
+    p{
+      font-size: 12px;
+    }
+    img{
+      display: none;
+    }
+  }
 }
